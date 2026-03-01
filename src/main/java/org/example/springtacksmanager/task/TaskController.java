@@ -1,4 +1,4 @@
-package org.example.springtacksmanager;
+package org.example.springtacksmanager.task;
 
 import jakarta.validation.Valid;
 import org.slf4j.Logger;
@@ -22,7 +22,7 @@ public class TaskController {
 
     @GetMapping()
     public List<Task> getTasks() {
-        logger.info("Get tasksMap");
+        logger.info("Get tasks");
         return taskService.getTasks();
     }
 
@@ -66,6 +66,24 @@ public class TaskController {
     public ResponseEntity<Task> doneTask(@PathVariable Long id) {
         logger.info("task was done");
         return ResponseEntity.ok(taskService.doneTask(id));
+    }
+
+    @GetMapping("/search")
+    public ResponseEntity<List<Task>> searchTask(
+            @RequestParam(name = "creatorId", required = false) Long creatorId,
+            @RequestParam(name = "assignedUserId", required = false) Long assignedUserId,
+            @RequestParam(name = "status", required = false) StatusEnum status,
+            @RequestParam(name = "priority", required = false) PriorityEnum priority,
+            @RequestParam(name = "pageSize", required = false) Integer pageSize,
+            @RequestParam(name = "pageNumber", required = false) Integer pageNumber
+    ) {
+        logger.info("search task");
+
+        TaskFilter filter = new TaskFilter(
+                creatorId, assignedUserId,status,priority,pageSize,pageNumber
+        );
+
+        return ResponseEntity.ok(taskService.searchByFilter(filter));
     }
 
 }

@@ -1,4 +1,4 @@
-package org.example.springtacksmanager;
+package org.example.springtacksmanager.task;
 
 enum StatusEnum {
     CREATED,

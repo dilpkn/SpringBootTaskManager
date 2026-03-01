@@ -1,10 +1,9 @@
-package org.example.springtacksmanager;
+package org.example.springtacksmanager.task;
 
 import jakarta.validation.constraints.Future;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Null;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 record Task (

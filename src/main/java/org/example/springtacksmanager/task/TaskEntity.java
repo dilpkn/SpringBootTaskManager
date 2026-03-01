@@ -1,9 +1,8 @@
-package org.example.springtacksmanager;
+package org.example.springtacksmanager.task;
 
 
 import jakarta.persistence.*;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
@@ -21,7 +20,7 @@ public class TaskEntity {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "status")
-    private StatusEnum statusEnum;
+    private StatusEnum status;
 
     @Column(name = "start_date")
     private  LocalDateTime startDate;
@@ -31,21 +30,21 @@ public class TaskEntity {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "priority")
-    private PriorityEnum priorityEnum;
+    private PriorityEnum priority;
 
     @Column(name = "done_date_time")
     private LocalDateTime doneDateTime;
 
-    public TaskEntity(Long id, Long creatorId, Long assignedUserId, StatusEnum statusEnum,
+    public TaskEntity(Long id, Long creatorId, Long assignedUserId, StatusEnum status,
                       LocalDateTime startDate, LocalDateTime endDate,
-                      PriorityEnum priorityEnum, LocalDateTime doneDateTime) {
+                      PriorityEnum priority, LocalDateTime doneDateTime) {
         this.id = id;
         this.creatorId = creatorId;
         this.assignedUserId = assignedUserId;
-        this.statusEnum = statusEnum;
+        this.status = status;
         this.startDate = startDate;
         this.endDate = endDate;
-        this.priorityEnum = priorityEnum;
+        this.priority = priority;
         this.doneDateTime = doneDateTime;
     }
 
@@ -73,8 +72,8 @@ public class TaskEntity {
         return assignedUserId;
     }
 
-    public StatusEnum getStatusEnum() {
-        return statusEnum;
+    public StatusEnum getStatus() {
+        return status;
     }
 
     public LocalDateTime getStartDate() {
@@ -88,8 +87,8 @@ public class TaskEntity {
 
 
 
-    public PriorityEnum getPriorityEnum() {
-        return priorityEnum;
+    public PriorityEnum getPriority() {
+        return priority;
     }
 
     public void setId(Long id) {
@@ -104,8 +103,8 @@ public class TaskEntity {
         this.assignedUserId = assignedUserId;
     }
 
-    public void setStatusEnum(StatusEnum statusEnum) {
-        this.statusEnum = statusEnum;
+    public void setStatus(StatusEnum statusEnum) {
+        this.status = statusEnum;
     }
 
     public void setStartDate(LocalDateTime startDate) {
@@ -116,7 +115,7 @@ public class TaskEntity {
         this.endDate = endDate;
     }
 
-    public void setPriorityEnum(PriorityEnum priorityEnum) {
-        this.priorityEnum = priorityEnum;
+    public void setPriority(PriorityEnum priorityEnum) {
+        this.priority = priorityEnum;
     }
 }
